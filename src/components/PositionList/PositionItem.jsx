@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
 
-const PositionItem = ({ title, department, description, status }) => {
+const PositionItem = ({ title, department, description, status, date }) => {
 
   const [collapse, setCollapse] = useState(true);
 
@@ -17,6 +17,7 @@ const PositionItem = ({ title, department, description, status }) => {
         <p>Department: {department}</p>
         <p>Description: {description}</p>
         <p>Status: {status === 'false' ? 'Closed' : 'Opened'}</p>
+        <p>Created: {date}</p>
       </div>
     </div>
   );

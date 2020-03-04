@@ -19,7 +19,7 @@ const PositionList = ({ getAllPositions, loading, items }) => {
     return null;
   }
 
-  const renderItems = items.map(({ id, title, department, description, status }) => {
+  const renderItems = items.map(({ id, title, department, description, status, date }) => {
     return (
       <PositionItem
         key={id}
@@ -27,6 +27,7 @@ const PositionList = ({ getAllPositions, loading, items }) => {
         department={department}
         description={description}
         status={status}
+        date={date}
       />
     )
   });

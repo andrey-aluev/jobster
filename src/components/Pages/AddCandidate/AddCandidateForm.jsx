@@ -20,7 +20,7 @@ const AddCandidateForm = ({ onSubmit, positions }) => {
     validationSchema: Yup.object().shape({
       name: Yup.string().required('Required'),
       description: Yup.string().required('Required'),
-      positionId: Yup.string().required('Required'),
+      positionId: Yup.string(),
     }),
   });
 

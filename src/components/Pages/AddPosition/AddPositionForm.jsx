@@ -12,6 +12,7 @@ const AddPositionForm = ({ onSubmit }) => {
       title: '',
       department: '',
       description: '',
+      date: '',
       status: true
     },
     onSubmit: (values) => {
@@ -22,6 +23,7 @@ const AddPositionForm = ({ onSubmit }) => {
       title: Yup.string().required('Required'),
       department: Yup.string().required('Required'),
       description: Yup.string().required('Required'),
+      date: Yup.date().required('Required'),
     }),
   });
 
@@ -34,6 +36,8 @@ const AddPositionForm = ({ onSubmit }) => {
       <InputField placeholder="Department" name="department" type="text" {...props} />
 
       <InputField placeholder="Description" name="description" type="textarea" {...props} />
+
+      <InputField placeholder="Date" name="date" type="date" {...props} />
 
       <InputField placeholder="Status" name="status" type="select" {...props}>
         <option value="true" defaultValue={true}>Open</option>

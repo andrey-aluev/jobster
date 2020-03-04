@@ -1,5 +1,9 @@
 import React from 'react';
 import cnames from 'classnames';
+import DatePicker from 'react-datepicker';
+//import DatePicker from 'react-date-picker';
+import 'react-datepicker/dist/react-datepicker.css';
+
 
 const Input = (
   {
@@ -11,7 +15,7 @@ const Input = (
     touched, errors,
     placeholder,
     autoFocus,
-    autoComplete = 'false',
+    autoComplete = 'off',
   }) => {
   return (
     <input
@@ -23,6 +27,32 @@ const Input = (
       className={cnames('form-control', { 'is-invalid': touched[name] && errors[name] })}
       placeholder={placeholder}
       autoFocus={autoFocus}
+      autoComplete={autoComplete}
+    />
+  );
+};
+
+const Date = (
+  {
+    name,
+    values,
+    handleBlur,
+    touched, errors,
+    placeholder,
+    autoComplete = 'off',
+    setFieldValue,
+  }) => {
+
+  return (
+    <DatePicker
+      type="date"
+      name={name}
+      placeholder={placeholder}
+      onChange={e => setFieldValue(name, e.toDateString())}
+      value={values[name]}
+      onBlur={handleBlur}
+      dateFormat="yyyy.MM.dd"
+      className={cnames('form-control', { 'is-invalid': (touched[name] && errors[name]) })}
       autoComplete={autoComplete}
     />
   );
@@ -97,6 +127,11 @@ const InputField = (props) => {
 
     case 'textarea': {
       renderInput = <TextArea name={name} {...rest}/>;
+      break;
+    }
+
+    case 'date': {
+      renderInput = <Date name={name} {...rest}/>;
       break;
     }
 

@@ -36,6 +36,8 @@ const AddPosition = (
   return (
     <Page title="Add position">
 
+
+
       <div className="row">
         <div className="col-6">
           <AddPositionForm
