@@ -11,7 +11,8 @@ export const getAllCandidatesSelector = (state) => {
 };
 
 export const getAllPositionsSelector = (state) => {
-  return state.positions.list.sort();
+  return state.positions.list
+    .sort((a,b) => (a.status < b.status) ? 1 : ((b.status < a.status) ? -1 : 0));
 };
 
 export const getPositionsDraftsSelector = (state) => {
