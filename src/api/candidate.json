@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1,
+    "name": "John Petrucci",
+    "description": "I can play the guitar"
+  },
+  {
+    "id": 2,
+    "name": "Jamie Oliver",
+    "description": "I can cook fried eggs"
+  }
+]
