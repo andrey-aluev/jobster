@@ -16,7 +16,7 @@ const PositionItem = ({ title, department, description, status, date }) => {
       <div className={cn('collapse', !collapse && 'show')}>
         <p>Department: {department}</p>
         <p>Description: {description}</p>
-        <p>Status: {status === 'false' ? 'Closed' : 'Opened'}</p>
+        <p>Status: {status === false ? 'Closed' : 'Opened'} {status}</p>
         <p>Created: {date}</p>
       </div>
     </div>

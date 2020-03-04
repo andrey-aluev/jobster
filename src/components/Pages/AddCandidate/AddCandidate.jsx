@@ -23,13 +23,13 @@ const AddCandidate = (
 
   const onSubmit = (data) => {
     const id = Date.now();
-    addCandidate({ id, ...data }, history);
+    localStorage.setItem('candidates', JSON.stringify([{ id, ...data }, ...items]));
 
     if (data.positionId) {
       updatePositionStatus(data.positionId);
     }
 
-    localStorage.setItem('candidates', JSON.stringify([{ id, ...data }, ...items]));
+    addCandidate({ id, ...data }, history);
   };
 
   return (
