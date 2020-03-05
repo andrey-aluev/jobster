@@ -49,7 +49,7 @@ const PositionItem = ({ id, title, department, description, status, date, candid
   };
 
   const CandidatesToPosition = () => {
-    if (!candidatesPosition.length) {
+    if (!candidatesPosition) {
       return null;
     }
 
