@@ -2,17 +2,23 @@ import React, { useEffect } from 'react';
 import Page from '../Page';
 import AddCandidateForm from './AddCandidateForm';
 import { connect } from 'react-redux';
-import { addCandidate, getAllCandidates } from '../../../store/reducers/candidateReducer';
+import { addCandidate, addCandidateToDraft, getAllCandidates } from '../../../store/reducers/candidateReducer';
 import { getAllPositions, updatePositionStatus } from '../../../store/reducers/positionReducer';
-import { getAllCandidatesSelector, getOpenPositionsSelector } from '../../../store/selectors';
+import {
+  getAllCandidatesSelector,
+  getCandidatesDraftsSelector,
+  getOpenPositionsSelector,
+  getPositionsDraftsSelector
+} from '../../../store/selectors';
 
 const AddCandidate = (
   {
     getAllCandidates,
     getAllPositions,
     addCandidate,
+    addCandidateToDraft,
     updatePositionStatus,
-    items, positions,
+    items, positions, drafts,
     history
   }) => {
 
@@ -21,15 +27,20 @@ const AddCandidate = (
     getAllPositions();
   }, [getAllCandidates, getAllPositions]);
 
-  const onSubmit = (data) => {
+  const onSubmit = (data, draft) => {
     const id = Date.now();
-    localStorage.setItem('candidates', JSON.stringify([{ id, ...data }, ...items]));
 
-    if (data.positionId) {
-      updatePositionStatus(data.positionId);
+    if (!draft) {
+      localStorage.setItem('candidates', JSON.stringify([{ id, ...data }, ...items]));
+
+      if (data.positionId) {
+        updatePositionStatus(data.positionId);
+      }
+
+      addCandidate({ id, ...data }, history);
+    } else {
+      addCandidateToDraft({ id, ...data }, drafts.length + 1);
     }
-
-    addCandidate({ id, ...data }, history);
   };
 
   return (
@@ -39,6 +50,7 @@ const AddCandidate = (
           <AddCandidateForm
             onSubmit={onSubmit}
             positions={positions}
+            drafts={drafts}
           />
         </div>
       </div>
@@ -49,12 +61,14 @@ const AddCandidate = (
 const mapStateToProps = (state) => ({
   items: getAllCandidatesSelector(state),
   positions: getOpenPositionsSelector(state),
+  drafts: getCandidatesDraftsSelector(state)
 });
 
 const mapDispatchToProps = {
   getAllCandidates,
   getAllPositions,
   addCandidate,
+  addCandidateToDraft,
   updatePositionStatus
 };
 

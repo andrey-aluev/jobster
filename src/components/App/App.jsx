@@ -2,7 +2,7 @@ import React from 'react';
 import AppHeader from '../AppHeader';
 import { Route, Switch } from 'react-router-dom';
 
-import { AddCandidate, AddPosition, ConfirmPosition, HomePage } from '../Pages';
+import { AddCandidate, AddPosition, ConfirmPosition, ConfirmCandidate, HomePage } from '../Pages';
 
 import './bootstrap.min.css';
 import Alert from '../Alert/Alert';
@@ -22,6 +22,7 @@ const App = () => {
           <Route path="/add-position" exact component={AddPosition}/>
           <Route path="/add-candidate" exact component={AddCandidate}/>
           <Route path="/confirm-position" exact component={ConfirmPosition}/>
+          <Route path="/confirm-candidate" exact component={ConfirmCandidate}/>
         </Switch>
       </main>
 

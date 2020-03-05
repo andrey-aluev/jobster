@@ -12,7 +12,7 @@ export const getAllCandidatesSelector = (state) => {
 
 export const getAllPositionsSelector = (state) => {
   return state.positions.list
-    .sort((a,b) => (a.status < b.status) ? 1 : ((b.status < a.status) ? -1 : 0));
+    .sort((a, b) => (a.status < b.status) ? 1 : ((b.status < a.status) ? -1 : 0));
 };
 
 export const getPositionsDraftsSelector = (state) => {
@@ -25,5 +25,9 @@ export const getOpenPositionsSelector = (state) => {
     return null;
   }
 
-  return list.filter(item => item.status ===  true)
+  return list.filter(item => item.status === true);
+};
+
+export const getCandidatesDraftsSelector = (state) => {
+  return state.candidates.drafts;
 };

@@ -22,7 +22,12 @@ const ConfirmPosition = ({ items, drafts, saveDraftPositions, cancelDraftsPositi
 
   return (
     <Page title="Confirm positions">
-      <Drafts items={drafts} onSubmit={onSaveDrafts} onCancel={onCancelDrafts}/>
+      <Drafts
+        items={drafts}
+        onSubmit={onSaveDrafts}
+        onCancel={onCancelDrafts}
+        type="positions"
+      />
     </Page>
   );
 };

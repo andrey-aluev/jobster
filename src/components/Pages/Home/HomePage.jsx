@@ -15,7 +15,7 @@ const HomePage = () => {
         </div>
 
         <div className="tiles__item">
-          <Link to="/add-candidate" className="tiles__link">Create Candidate</Link>
+          <Link to="/add-candidate" className="tiles__link">Create one or more new Candidates</Link>
         </div>
       </div>
 
