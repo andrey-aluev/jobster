@@ -12,6 +12,9 @@ export const positionAPI = {
         resolve(positionData);
       }, 500);
     });
+  },
+  getPositionById(id) {
+    return positionData.filter(p => p.id === Number(id));
   }
 };
 

@@ -19,11 +19,12 @@ const CandidateList = ({ getAllCandidates, loading, items }) => {
     return null;
   }
 
-  const renderItems = items.map(({ id, name, description }) => {
+  const renderItems = items.map(({ id, name, description, positionId }) => {
     return (
       <CandidateItem
         name={name}
         description={description}
+        positionId={positionId}
         key={id}
       />
     );
