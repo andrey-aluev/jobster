@@ -11,7 +11,7 @@ const AppHeader = ({ addMessage }) => {
   };
 
   return (
-    <div className="app-header mb-2">
+    <div className="app__header app-header mb-2">
       <div className="navbar navbar-dark bg-primary">
         <div className="container">
           <Link to="/" className="navbar-brand">Jobster.com</Link>

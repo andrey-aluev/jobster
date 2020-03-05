@@ -1,0 +1,21 @@
+body, html {
+  height: 100%;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app__body {
+  flex-grow: 1;
+}
+
+.app__footer {
+  background: #f8f8f8;
+}
+
+.app__footer p {
+  margin: 0;
+}

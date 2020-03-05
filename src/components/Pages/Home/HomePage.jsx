@@ -3,15 +3,21 @@ import Page from '../Page';
 import { Link } from 'react-router-dom';
 import PositionList from '../../PositionList/PositionList';
 import CandidateList from '../../CandidateList/CandidateList';
+import './HomePage.css';
 
 const HomePage = () => {
   return (
     <Page title="Welcome to Jobster">
-      <div className="btn-group btn-group-lg mb-4">
-        <Link to="/add-position" className="btn btn-primary">Create one or more new Positions</Link>
-        <Link to="/add-candidate" className="btn btn-primary">Create Candidate</Link>
-      </div>
 
+      <div className="tiles row mb-4">
+        <div className="tiles__item">
+          <Link to="/add-position" className="tiles__link">Create one or more new Positions</Link>
+        </div>
+
+        <div className="tiles__item">
+          <Link to="/add-candidate" className="tiles__link">Create Candidate</Link>
+        </div>
+      </div>
 
       <div className="row">
         <div className="col-6">

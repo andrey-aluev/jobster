@@ -8,11 +8,16 @@ const POSITION_ADD = 'POSITION_ADD';
 
 const POSITION_ADD_TO_DRAFT = 'POSITION_ADD_TO_DRAFT';
 const POSITION_SAVE_DRAFTS = 'POSITION_SAVE_DRAFTS';
+const POSITION_CANCEL_DRAFTS = 'POSITION_CANCEL_DRAFTS';
 const POSITION_UPDATE_STATUS = 'POSITION_UPDATE_STATUS';
 
 const initialState = {
   list: [],
-  drafts: [],
+  drafts: [{
+    id: 1,
+    title: 'aaa',
+
+  }],
   loading: false,
 };
 
@@ -86,6 +91,13 @@ const positionReducer = (state = initialState, action) => {
       return updateStatus(state, action.positionId);
     }
 
+    case POSITION_CANCEL_DRAFTS: {
+      return {
+        ...state,
+        drafts: []
+      }
+    }
+
     default:
       return state;
   }
@@ -147,15 +159,21 @@ export const addPosition = (position, history) => dispatch => {
   history.push('/');
 };
 
-export const addPositionToDraft = (position) => dispatch => {
+export const addPositionToDraft = (position, length) => dispatch => {
   dispatch(positionAddToDraft(position));
-  dispatch(addMessage('Position added to Drafts'));
+  dispatch(addMessage(`Position #${length} added to Drafts`));
 };
 
 export const saveDraftPositions = (positions, history) => dispatch => {
   dispatch(positionSaveDrafts(positions));
   dispatch(addMessage(`All (${positions.length}) positions added`));
   history.push('/');
+};
+
+export const cancelDraftsPositions = () => {
+  return {
+    type: POSITION_CANCEL_DRAFTS
+  }
 };
 
 export const updatePositionStatus = (positionId) => dispatch => {

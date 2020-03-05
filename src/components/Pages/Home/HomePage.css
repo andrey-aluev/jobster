@@ -1,0 +1,28 @@
+.tiles {
+  display: flex;
+  align-items: center;
+}
+
+.tiles__item{
+  flex: 0 0 50%;
+  padding: 0 15px;
+}
+
+.tiles__link {
+  display: block;
+  text-align: center;
+  padding: 32px 40px;
+  font-size: 20px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  text-decoration: none;
+  background: #f8f8f8;
+  transition: background-color .25s, box-shadow .25s;
+}
+
+.tiles__link:hover {
+  background: #fff;
+  text-decoration: inherit;
+  box-shadow: 0 0 5px rgba(0,0,0,.2);
+}
+

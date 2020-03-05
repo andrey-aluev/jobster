@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import InputField from '../../Forms/InputField';
+import moment from 'moment';
+import { Link } from 'react-router-dom';
 
-const AddPositionForm = ({ onSubmit }) => {
+const AddPositionForm = ({ onSubmit, drafts }) => {
 
   const [draft, setDraft] = useState(false);
 
@@ -12,7 +14,7 @@ const AddPositionForm = ({ onSubmit }) => {
       title: '',
       department: '',
       description: '',
-      date: '',
+      date: moment().format('YYYY.MM.DD'),
       status: true
     },
     onSubmit: (values) => {
@@ -29,6 +31,16 @@ const AddPositionForm = ({ onSubmit }) => {
 
   const { handleSubmit, resetForm, ...props } = loginFormOptions;
 
+  const ConfirmButton = () => {
+
+    if (!drafts.length) return null;
+
+
+    return (
+      <Link to="/confirm-position" className="btn btn-lg btn-outline-primary ml-2">Save all</Link>
+    )
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <InputField placeholder="Title" name="title" type="text" {...props} />
@@ -44,9 +56,10 @@ const AddPositionForm = ({ onSubmit }) => {
         <option value="false">Closed</option>
       </InputField>
 
-      <div className="mt-2 btn-group">
-        <button className="btn btn-primary" onClick={() => setDraft(false)}>Save</button>
-        <button className="btn btn-primary" onClick={() => setDraft(true)}>Save and Add Another</button>
+      <div className="mt-2">
+        <button className="btn btn-lg btn-primary" onClick={() => setDraft(false)}>Save</button>
+        <button className="btn btn-lg btn-outline-primary ml-2" onClick={() => setDraft(true)}>Save and Add Another</button>
+        <ConfirmButton/>
       </div>
     </form>
   );

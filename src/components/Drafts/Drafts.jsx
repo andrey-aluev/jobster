@@ -1,7 +1,8 @@
 import React from 'react';
 import DraftItem from './DraftItem';
+import { Link } from 'react-router-dom';
 
-const Drafts = ({ items, onSubmit }) => {
+const Drafts = ({ items, onSubmit, onCancel }) => {
 
   if (!items.length) {
     return null;
@@ -20,13 +21,15 @@ const Drafts = ({ items, onSubmit }) => {
   });
 
   return (
-    <div className="col-6">
-      <section className="list-group mb-2">
+    <>
+      <section className="list-group mb-4">
         {renderItems}
       </section>
 
-      <button className="btn btn-outline-primary" onClick={onSubmit}>Apply</button>
-    </div>
+      <button className="btn btn-lg btn-primary" onClick={onSubmit}>Save all</button>
+      <Link to="/add-position" className="btn btn-lg btn-outline-primary ml-2">Back to adding</Link>
+      <button className="btn btn-lg btn-outline-danger ml-2" onClick={onCancel}>Cancel</button>
+    </>
   );
 };
 

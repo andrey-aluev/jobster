@@ -3,12 +3,11 @@ import Page from '../Page';
 import AddPositionForm from './AddPositionForm';
 import { addPosition, addPositionToDraft, getAllPositions, saveDraftPositions } from '../../../store/reducers/positionReducer';
 import { connect } from 'react-redux';
-import Drafts from '../../Drafts';
 import { getAllPositionsSelector, getPositionsDraftsSelector, getPositionsLoaderSelector } from '../../../store/selectors';
 
 const AddPosition = (
   {
-    getAllPositions, addPosition, addPositionToDraft, saveDraftPositions,
+    getAllPositions, addPosition, addPositionToDraft,
     items, drafts,
     history
   }) => {
@@ -24,29 +23,20 @@ const AddPosition = (
       addPosition({ id, ...data }, history);
       localStorage.setItem('positions', JSON.stringify([{ id, ...data }, ...items]));
     } else {
-      addPositionToDraft({ id, ...data });
+      addPositionToDraft({ id, ...data }, drafts.length + 1);
     }
-  };
-
-  const onSaveDrafts = () => {
-    saveDraftPositions(drafts, history);
-    localStorage.setItem('positions', JSON.stringify([...drafts, ...items]));
   };
 
   return (
     <Page title="Add position">
-
-
-
       <div className="row">
         <div className="col-6">
           <AddPositionForm
             onSubmit={onSubmit}
             addPositionToDraft={addPositionToDraft}
+            drafts={drafts}
           />
         </div>
-
-        <Drafts items={drafts} onSubmit={onSaveDrafts}/>
       </div>
 
     </Page>

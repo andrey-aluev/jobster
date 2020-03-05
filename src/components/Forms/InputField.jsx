@@ -1,8 +1,8 @@
 import React from 'react';
 import cnames from 'classnames';
 import DatePicker from 'react-datepicker';
-//import DatePicker from 'react-date-picker';
 import 'react-datepicker/dist/react-datepicker.css';
+import moment from 'moment';
 
 
 const Input = (
@@ -48,10 +48,9 @@ const Date = (
       type="date"
       name={name}
       placeholder={placeholder}
-      onChange={e => setFieldValue(name, e.toDateString())}
+      onChange={e => setFieldValue(name, moment(e).format('YYYY.MM.DD'))}
       value={values[name]}
       onBlur={handleBlur}
-      dateFormat="yyyy.MM.dd"
       className={cnames('form-control', { 'is-invalid': (touched[name] && errors[name]) })}
       autoComplete={autoComplete}
     />
