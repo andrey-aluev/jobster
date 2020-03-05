@@ -27,7 +27,7 @@ const CandidateItem = ({ name, description, positionId }) => {
 
   return (
     <div className="list-group-item list-group-item-action" onClick={handleClick}>
-      <p className={cn('', collapse && 'mb-0')}>{name}</p>
+      <p className={cn('pointer', collapse && 'mb-0')}>{name}</p>
 
       <div className={cn('collapse', !collapse && 'show')}>
         <p>Description: {description}</p>

@@ -5,7 +5,8 @@
     "department": "Dev1",
     "description": "We are a fast-growing and leading company in the personalized health space. We build software to help interpret peoples’ genetics, lab tests and symptoms in order to give personalized health recommendations.",
     "status": true,
-    "date": "2020.03.02"
+    "date": "2020.03.02",
+    "candidates": []
   },
   {
     "id": 2,
@@ -13,7 +14,8 @@
     "department": "Dev2",
     "description": "We are a fast-growing and leading company in the personalized health space. We build software to help interpret peoples’ genetics, lab tests and symptoms in order to give personalized health recommendations.",
     "status": true,
-    "date": "2020.03.01"
+    "date": "2020.03.01",
+    "candidates": []
   },
   {
     "id": 3,
@@ -21,6 +23,7 @@
     "department": "Dev3",
     "description": "We are a fast-growing and leading company in the personalized health space. We build software to help interpret peoples’ genetics, lab tests and symptoms in order to give personalized health recommendations.",
     "status": true,
-    "date": "2020.02.29"
+    "date": "2020.02.29",
+    "candidates": []
   }
 ]

@@ -11,7 +11,7 @@ const DraftItem = ({ title, department, description, status, ...props }) => {
 
   return (
     <div className="list-group-item list-group-item-action" onClick={handleClick}>
-      <p className={cn('', collapse && 'mb-0')}>{title}</p>
+      <p className={cn('pointer', collapse && 'mb-0')}>{title}</p>
 
       <div className={cn('collapse', !collapse && 'show')}>
         <p>Department: {department}</p>

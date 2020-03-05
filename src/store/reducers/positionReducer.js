@@ -11,9 +11,12 @@ const POSITION_SAVE_DRAFTS = 'POSITION_SAVE_DRAFTS';
 const POSITION_CANCEL_DRAFTS = 'POSITION_CANCEL_DRAFTS';
 const POSITION_UPDATE_STATUS = 'POSITION_UPDATE_STATUS';
 
+const POSITION_SET_CANDIDATE = 'POSITION_SET_CANDIDATE';
+
 const initialState = {
   list: [],
   drafts: [],
+  candidates: [],
   loading: false,
 };
 
@@ -32,6 +35,38 @@ const updateStatus = (state, positionId) => {
     newArr = [
       ...list.slice(0, idx),
       updatedPos,
+      ...list.slice(idx + 1)];
+  }
+
+  localStorage.setItem('positions', JSON.stringify(newArr));
+
+  return {
+    ...state,
+    list: newArr,
+  };
+};
+
+const updatePosition = (state, data) => {
+  let newArr = [];
+  const { list } = state;
+  const { candidate, positionId } = data;
+
+  const existPosition = list.find(p => p.id === Number(positionId));
+  const existCandidate = existPosition.candidates.find(c => c === candidate);
+
+  console.log(existCandidate);
+
+  if (existCandidate) {
+    return state;
+  }
+
+  if (existPosition) {
+    existPosition.candidates.push(candidate);
+    const idx = list.findIndex(p => p.id === existPosition.id);
+
+    newArr = [
+      ...list.slice(0, idx),
+      existPosition,
       ...list.slice(idx + 1)];
   }
 
@@ -91,7 +126,11 @@ const positionReducer = (state = initialState, action) => {
       return {
         ...state,
         drafts: []
-      }
+      };
+    }
+
+    case POSITION_SET_CANDIDATE: {
+      return updatePosition(state, action.data);
     }
 
     default:
@@ -140,6 +179,13 @@ const positionUpdateStatus = (positionId) => {
   };
 };
 
+const positionSetCandidate = (data) => {
+  return {
+    type: POSITION_SET_CANDIDATE,
+    data
+  };
+};
+
 export const getAllPositions = () => async dispatch => {
   dispatch(positionsRequested());
   positionAPI.getAllPositions()
@@ -169,7 +215,11 @@ export const saveDraftPositions = (positions, history) => dispatch => {
 export const cancelDraftsPositions = () => {
   return {
     type: POSITION_CANCEL_DRAFTS
-  }
+  };
+};
+
+export const setCandidateToPosition = (candidate, positionId) => dispatch => {
+  dispatch(positionSetCandidate({ candidate, positionId }));
 };
 
 export const updatePositionStatus = (positionId) => dispatch => {
