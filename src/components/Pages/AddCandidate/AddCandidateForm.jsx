@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import InputField from '../../Forms/InputField';
-import { Link } from 'react-router-dom';
+import SaveButtons from '../../SaveButtons';
 
 const AddCandidateForm = ({ onSubmit, positions, drafts }) => {
 
@@ -31,13 +31,6 @@ const AddCandidateForm = ({ onSubmit, positions, drafts }) => {
     );
   });
 
-  const ConfirmButton = () => {
-    if (!drafts.length) return null;
-    return (
-      <Link to="/confirm-candidate" className="btn btn-lg btn-outline-primary ml-2">Save all</Link>
-    )
-  };
-
   const { handleSubmit, resetForm, ...props } = loginFormOptions;
 
   return (
@@ -52,9 +45,7 @@ const AddCandidateForm = ({ onSubmit, positions, drafts }) => {
       </InputField>
 
       <div className="mt-2">
-        <button className="btn btn-lg btn-primary" onClick={() => setDraft(false)}>Save</button>
-        <button className="btn btn-lg btn-outline-primary ml-2" onClick={() => setDraft(true)}>Save and Add Another</button>
-        <ConfirmButton/>
+        <SaveButtons drafts={drafts} setDraft={setDraft} type="candidate"/>
       </div>
     </form>
   );

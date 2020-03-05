@@ -1,6 +1,6 @@
 import React from 'react';
 import DraftItem from './DraftItem';
-import { Link } from 'react-router-dom';
+import SaveButtonsConfirm from '../SaveButtonsConfirm';
 
 const Drafts = ({ items, onSubmit, onCancel, type = 'positions' }) => {
 
@@ -40,9 +40,10 @@ const Drafts = ({ items, onSubmit, onCancel, type = 'positions' }) => {
         {renderItems}
       </section>
 
-      <button className="btn btn-lg btn-primary" onClick={onSubmit}>Save all</button>
-      <Link to={type === 'positions' ? '/add-position': '/add-candidate'} className="btn btn-lg btn-outline-primary ml-2">Back to adding</Link>
-      <button className="btn btn-lg btn-outline-danger ml-2" onClick={onCancel}>Cancel</button>
+      <SaveButtonsConfirm
+        onSubmit={onSubmit} onCancel={onCancel}
+        type={type}
+      />
     </>
   );
 };

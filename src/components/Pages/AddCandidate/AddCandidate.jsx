@@ -4,12 +4,7 @@ import AddCandidateForm from './AddCandidateForm';
 import { connect } from 'react-redux';
 import { addCandidate, addCandidateToDraft, getAllCandidates } from '../../../store/reducers/candidateReducer';
 import { getAllPositions, updatePositionStatus } from '../../../store/reducers/positionReducer';
-import {
-  getAllCandidatesSelector,
-  getCandidatesDraftsSelector,
-  getOpenPositionsSelector,
-  getPositionsDraftsSelector
-} from '../../../store/selectors';
+import { getAllCandidatesSelector, getCandidatesDraftsSelector, getOpenPositionsSelector } from '../../../store/selectors';
 
 const AddCandidate = (
   {

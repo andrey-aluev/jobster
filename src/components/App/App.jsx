@@ -1,12 +1,10 @@
 import React from 'react';
 import AppHeader from '../AppHeader';
 import { Route, Switch } from 'react-router-dom';
-
+import Alert from '../Alert/Alert';
 import { AddCandidate, AddPosition, ConfirmPosition, ConfirmCandidate, HomePage } from '../Pages';
 
 import './bootstrap.min.css';
-import Alert from '../Alert/Alert';
-
 import './App.css';
 
 const App = () => {

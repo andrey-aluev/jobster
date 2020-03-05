@@ -11,7 +11,7 @@ const CANDIDATE_CANCEL_DRAFTS = 'CANDIDATE_CANCEL_DRAFTS';
 
 const initialState = {
   list: [],
-  drafts: [{id: 1, name: 'AAA'} ,{id: 2, name: 'BBB'}],
+  drafts: [],
   loading: false
 };
 

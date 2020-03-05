@@ -3,7 +3,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import InputField from '../../Forms/InputField';
 import moment from 'moment';
-import { Link } from 'react-router-dom';
+import SaveButtons from '../../SaveButtons';
 
 const AddPositionForm = ({ onSubmit, drafts }) => {
 
@@ -31,16 +31,6 @@ const AddPositionForm = ({ onSubmit, drafts }) => {
 
   const { handleSubmit, resetForm, ...props } = loginFormOptions;
 
-  const ConfirmButton = () => {
-
-    if (!drafts.length) return null;
-
-
-    return (
-      <Link to="/confirm-position" className="btn btn-lg btn-outline-primary ml-2">Save all</Link>
-    )
-  };
-
   return (
     <form onSubmit={handleSubmit}>
       <InputField placeholder="Title" name="title" type="text" {...props} />
@@ -57,9 +47,7 @@ const AddPositionForm = ({ onSubmit, drafts }) => {
       </InputField>
 
       <div className="mt-2">
-        <button className="btn btn-lg btn-primary" onClick={() => setDraft(false)}>Save</button>
-        <button className="btn btn-lg btn-outline-primary ml-2" onClick={() => setDraft(true)}>Save and Add Another</button>
-        <ConfirmButton/>
+        <SaveButtons drafts={drafts} setDraft={setDraft} type="position"/>
       </div>
     </form>
   );

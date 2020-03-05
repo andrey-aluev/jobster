@@ -13,11 +13,7 @@ const POSITION_UPDATE_STATUS = 'POSITION_UPDATE_STATUS';
 
 const initialState = {
   list: [],
-  drafts: [{
-    id: 1,
-    title: 'aaa',
-
-  }],
+  drafts: [],
   loading: false,
 };
 
