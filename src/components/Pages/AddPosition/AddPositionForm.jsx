@@ -25,7 +25,7 @@ const AddPositionForm = ({ onSubmit, drafts }) => {
       title: Yup.string().required('Required'),
       department: Yup.string().required('Required'),
       description: Yup.string().required('Required'),
-      date: Yup.date().required('Required'),
+      date: Yup.string().required('Required'),
     }),
   });
 
